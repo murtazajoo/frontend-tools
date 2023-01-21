@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ADD TOOL-frontend tools</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/1443690ef3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+     <div id="menu" class=" menu-close border bg-dark text-light px-2 py-2">
+      <p class="bg-dark text-light px-3 py-1 ">
+      </p>
+        <hr>
+
+      <ul class="px-1">
+        <!-- <li ><a  class="px-4 text-light py-2" href=""> Dashboard </a></li> -->
+        <li><a  class="px-4 text-light py-2 " href="../"> Home </a></li>
+        <li><a  class="px-4 text-light py-2 active" href="/admin/"> add tool  </a></li>
+        <hr>
+        <li >
+  <a class="px-4 py-1 text-light btn" onclick="signOut()">       signout <i class="fa-solid fa-arrow-right-from-bracket"></a></i>
+        </li>
+      </ul>
+    </div>
+    <nav class="navbar shadow navbar-expand-lg sticky-top bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand font-monospace" href="/"> 🛠️ Frontend tools</a>
+        <a href="user/" class="btn btn-primary" id="user">Login</a>
+        <button class="btn " id="burger" >
+          <i class="fa-solid h4 fa-bars-staggered text-light"></i>
+        </button>
+      </div>
+    </nav>
+    <main>
+      <div class="container text-light">
+        <div class="py-2" id="alert-holder"></div>
+        <div class="row">
+          <div class="col-lg-4">
+            <p>live preview</p>
+            <div class="col-lg-4 p-0">
+              <div class="card text-bg-dark" style="width: 18rem">
+                <div class="card-body">
+                  <img
+                    id="preview-image-url"
+                    class="card-logo mx-2"
+                    src="data:image/jpeg;base64,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"
+                    alt=""
+                  />
+                  <h5 class="card-title">
+                    <span id="preview-name">FRONTEND TOOLS</span
+                    ><button class="btn text-primary">&#9432;</button>
+                  </h5>
+
+                  <div class="card-text d-flex">
+                    <small class="text-muted">category</small>
+                    <p id="preview-category">
+                      <span class="category">HTML</span>
+                    </p>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center py-2"
+                  >
+                    <button class="btn text-primary">
+                      <i class="fa-solid fa-heart"></i><small> 24</small>
+                    </button>
+                    <div>
+                      <button class="btn btn-primary mx-2">
+                        <i class="fa-regular fa-bookmark"></i>
+                      </button>
+                      <a href="#" class="btn btn-primary">VISIT</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- too lend -->
+          </div>
+          <div class="col-lg-8">
+            <div class="py-3">
+              <div class="mb-3">
+                  <label for="name" class="form-label">TOOl NAME</label>
+                  <input type="text" class="form-control" id="name" placeholder="Frontens tools" />
+                </div>
+              <div class="mb-3">
+                <label for="url" class="form-label">website url</label>
+                <input type="text" class="form-control" id="url" placeholder="https://frontendtools.vercel.app/" />
+              </div>
+              <div class="mb-3">
+                <label for="image-url" class="form-label">Preview image-url</label>
+                <input type="text" class="form-control" id="image-url" aria-describedby="imageHelp" />
+                                <div id="imageHelp" class="px-2 form-text text-secondary">
+you can get the image address (url) either from google images or by uploading you image on a website like <a href="https://imgur.com/" target="_blank">imugur</a>
+
+</div>
+              </div>
+              <div class="mb-3">
+                <label for="category" class="form-label">category</label>
+                <input
+                  type="text"
+                  list="categories"
+                  class="form-control"
+                  id="category"
+                  placeholder="HTML,CSS"
+                aria-describedby="categoryHelp" />
+                <div id="categoryHelp" class="px-2 form-text">
+                  Valid =>
+<span class="text-light">  "HTML",
+  "CSS",
+  "JS",
+  "ICON",
+  "FONT",
+  "IMAGE",
+  "DESIGN",
+  "LIBRARIES",
+  "FRAMEWORKS",
+  "EXTENTIONS",
+  "OTHER"</span>
+  You can only add upto three categories seprated by comma(,)
+</div>
+                <datalist id="categories">
+                  <option value="HTML"></option>
+                  <option value="CSS"></option>
+                  <option value="JS"></option>
+                  <option value="IMAGE"></option>
+                  <option value="ICON"></option>
+                  <option value="ILLUSTRATION"></option>
+                  <option value="EXTENTIONS"></option>
+                  <option value="DESIGN"></option>
+                  <option value="OTHER"></option>
+
+                </datalist>
+              </div>
+              <div class="mb-3">
+                <label for="discription" class="i-text">Discription</label>
+                <textarea
+                  class="form-control"
+                  aria-label="Discription"
+                  id="discription"
+                  aria-describedby="disHelp" 
+                ></textarea>
+                    <div id="disHelp" class="px-2 form-text text-secondary">
+                      write discription of the tool under 150 letters
+</div>
+              </div>
+              <button
+                onclick="uploadToDb()"
+                id="upload"
+                class="btn btn-primary"
+              >
+                ADD TOOL
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container bg-light p-2 rounded mt-5 m-auto mb-1">
+        <h3 class="text-muted">Condition</h3>
+        <ul >
+  <li class=" text-muted bg-none ">Do not add a tool again that is already present on the website</li>
+  <li class=" text-muted bg-none ">Add the correct category to the tool</li>
+  <li class=" text-muted bg-none ">Tools you add will be viewed by us also and we can remove the tool if its not fitting </li>
+</ul>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../dynamicScript.js"></script>
+    <script src="./script.js"></script>
+        <script src="../navToggle.js"></script>
+  </body>
+</html>

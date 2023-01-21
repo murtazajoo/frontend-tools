@@ -1,0 +1,195 @@
+.container-fluid > .row > div {
+  min-height: 100vh;
+}
+body {
+  letter-spacing: 1px;
+  background-color: #36454f;
+}
+:root {
+  --radius: 20px;
+}
+.ad {
+  background: rgb(42, 44, 79);
+  /* height: 250px; */
+  width: 300px;
+}
+.filter .btn {
+  margin: 7px !important;
+  border-radius: var(--radius) !important;
+}
+.btn-check:checked + .btn {
+  box-shadow: 0px 0px 0 3px rgba(255, 0, 0, 0.098);
+}
+
+.card {
+  height: 100% !important;
+  /* margin: 10px !important; */
+  border-radius: var(--radius) !important;
+  transition: transform 200ms;
+}
+
+.card:hover,
+.card:focus {
+  transform: scale3d(1.01, 1.01, 1.01);
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+.user:hover,
+.user:focus {
+  transform: scale3d(1, 1, 1);
+  box-shadow: none;
+}
+.card-body {
+  display: flex !important;
+  justify-content: space-between !important;
+  flex-direction: column !important;
+}
+.card-title {
+  text-transform: uppercase;
+}
+
+.category {
+  background-color: rgba(51, 51, 51, 1);
+  color: #fff;
+  font-size: 10px;
+  padding: 5px;
+  margin: 0px 4px;
+}
+
+.card a {
+  text-transform: uppercase;
+  float: right;
+  border-radius: var(--radius) !important;
+}
+.card .details {
+  text-decoration: underline;
+}
+.card-logo {
+  width: 100%;
+  margin: 10px auto !important;
+  height: 150px;
+  transition: 200ms;
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--radius);
+}
+
+.col-lg-4 {
+  padding: 10px !important;
+}
+/* .dis {
+  position: sticky;
+  top: 0px;
+} */
+.card-title,
+.mark-link,
+.card .btn {
+  z-index: 2 !important;
+}
+
+.card-body::after {
+  border-radius: var(--radius);
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  background: #141e30; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #243b55,
+    #020b1c
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #243b55,
+    #041431
+  ) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  opacity: 0.2;
+  z-index: 1;
+}
+
+#loader {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#burger {
+  display: none;
+}
+#menu {
+  min-width: 250px !important;
+  border-radius: var(--radius);
+  z-index: 999999;
+  position: fixed;
+  background-color: #fff;
+  top: 63px;
+  right: 10px;
+  opacity: 1;
+  transition: 500ms ease-out;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#menu ul {
+  border-radius: var(--radius);
+  list-style-type: none;
+  padding: 0px;
+  font-size: 18px;
+}
+#menu li,
+#menu li a {
+  text-decoration: none !important;
+  display: block;
+  text-transform: capitalize;
+  font-family: monospace;
+  border-radius: var(--radius);
+}
+#menu li a:hover {
+  text-decoration: underline !important;
+
+  background-color: rgba(0, 64, 120, 0.311);
+}
+
+#menu li a span {
+  width: 200px !important;
+}
+
+.menu-close {
+  right: -270px !important;
+  overflow: hidden;
+}
+
+.active {
+  margin: 10px;
+  background-color: rgba(0, 64, 120, 0.311);
+
+  text-decoration: underline !important;
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 90% !important;
+  }
+}
+
+/* body {
+  overflow: hidden;
+} */
+.cover {
+  overflow: hidden;
+}
+.cover::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: #020b1c5e;
+  height: 100vh;
+}
+
+.custom-popover {
+  --bs-popover-max-width: 270px;
+  --bs-popover-border-color: var(--bs-primary);
+  --bs-popover-header-bg: var(--bs-primary);
+  --bs-popover-header-color: var(--bs-white);
+  --bs-popover-body-padding-x: 1rem;
+  --bs-popover-body-padding-y: 0.5rem;
+}

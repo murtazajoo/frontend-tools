@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2396803159752168"
+     crossorigin="anonymous"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FREE | Frontend tools</title>
+    <meta
+      name="description"
+      content="Top frontend free development online tools you must know. FREE Frontend website all at one place,html biolerplate , js tools , frontend css"
+    />
+    <link rel="icon" href="favicon.ico" />
+    <meta property="og:title" content="Frontend tools" />
+    <meta
+      property="og:description"
+      content="Top frontend free development online tools you must know"
+    />
+    <meta property="og:image" content="demo.jpg" />
+    <meta name="twitter:title" content="Frontend tools" />
+    <meta
+      name="twitter:description"
+      content="Top frontend free development online tools you must know"
+    />
+    <meta name="twitter:image" content="demo.jpg" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/1443690ef3.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="menu" class=" menu-close border bg-dark text-light px-2 py-2">
+      <p class="bg-dark text-light px-3 py-1 ">
+      </p>
+        <hr>
+
+      <ul class="px-1">
+        <!-- <li ><a  class="px-4 text-light py-2" href=""> Dashboard </a></li> -->
+        <li><a  class="px-4 text-light py-2" href="/admin/"> add tool  </a></li>
+        <li><a  class="px-4 text-light py-2" onclick="bookmakrs()"> bookmarks </a></li>
+        <hr>
+        <li >
+  <a class="px-4 py-1 text-light btn" onclick="signOut()"> signout <i class="fa-solid fa-arrow-right-from-bracket"></a></i>
+        </li>
+      </ul>
+    </div>
+    <nav class="navbar shadow navbar-expand-lg sticky-top bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand font-monospace" href="/"> 🛠️ Frontend tools</a>
+        <a href="user/" class="btn btn-primary" id="user">Login</a>
+        <button class="btn " id="burger" >
+          <i class="fa-solid h4 fa-bars-staggered text-light"></i>
+        </button>
+      </div>
+    </nav>
+    <div class="alert alert-info opacity-50 alert-dismissible fade show" role="alert">
+      This Website is in beta version, You may experience some bugs: AND there
+      is a limit to the requests you make
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    <header>
+      <div
+        class="container filter mt-2  d-lg-flex justify-content-around align-items-center"
+        id="filter-container"
+      ></div>
+    </header>
+    <div id="request-error"></div>
+    <main>
+      <button
+        type="button"
+        class="border-none btn visually-hidden"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        id="login-alert"
+      ></button>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-9 p-lg-4 p-2">
+            <div class="conatiner">
+              <div class="row" id="tools-holder-element">
+                <div id="loader">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 py-4 ">
+            <div class="dis bg-light p-2 ">
+              <div>
+                <p class="font-monospace text-dark h2 py-2 ">LET's make Frontend easy</p>
+                <p id="discription-text">
+                  Help others by liking the tool that helped you or By adding a tool you made or is made by someone else but is not available here
+                </p>
+              </div>
+              <div class="border border-bottom"></div>
+              <div class="container px-0 text-center py-2">
+                <p><small>advertisement</small></p>
+                <div class="ad m-auto">
+                  <a target="_blank" href="https://xano.io/58qnl1js">
+                    <img
+                      class="img-fluid"
+                      src="data:image/png;base64,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"
+                      alt=""
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-dark text-center text-white">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Instagram -->
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="https://www.instagram.com/murtazajoo/"
+            role="button"
+            target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+
+          <!-- Linkedin -->
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="https://www.linkedin.com/in/murtaza-joo-b5346622b/"
+            role="button"
+            target="_blank"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+
+          <!-- Github -->
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="https://github.com/murtazajoo"
+            role="button"
+            target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+        </section>
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        made by
+        <a
+          class="text-white"
+          href="https://www.linkedin.com/in/murtaza-joo-b5346622b/"
+          >murtazajoo</a
+        >
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <div class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-3">
+             
+            <!-- <p class="text-dark h2">You Are not Logged In</p>
+            <p>
+              Please LOGIN first to like the tool or add the tool to your
+              bookmarks
+            </p> -->
+               <div class="card m-auto border-0 user " style="width: 20rem">
+        <div class="card-title text-center p-4 h4" id="formname">Sign Up</div>
+          <div style="visibility:hidden;" class="alert border-0 text-center bg-transparent p-0 m-0 alertLogin alert-danger text-danger" role="alert">
+      </div>
+        <form class="p-5 py-1">
+          <div class="mb-3 overflow-hidden" id="full-name">
+            <label for="name" class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              aria-describedby="name"
+              required
+            />
+          </div>
+          <div class="mb-3 overflow-hidden">
+            <label for="email" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              required
+            />
+          </div>
+          <div class="mb-3 overflow-hidden">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              autocomplete="on"
+              aria-describedby="emailHelp"
+              required
+            />
+            <div id="emailHelp" class="form-text">
+              password must be greater than 8 digits and must contain a number
+              and an alphabet
+            </div>
+          </div>
+
+          <p class="btn btn-primary" id="submitbtn" onclick="google=false;signupLogin()">
+            Submit
+          </p>
+        </form>
+        <div class="text-center py-2 cursor-pointer">
+          <p class="text-primary m-0" role="button" id="toggle">
+            Already have an account? Login
+          </p>
+        </div>
+       
+          </div>
+          </div>
+          <div class="modal-footer border-0">
+        
+          </div>
+        </div>
+      </div>
+    </div>
+    
+ 
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+<script src="user/script.js"></script>
+<script src="filter.js"></script>
+    <script src="navToggle.js"></script>
+    <script src="dynamicScript.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
